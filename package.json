@@ -2,7 +2,7 @@
   "name": "agrocapital-br",
   "version": "1.0.0",
   "private": true,
-  "description": "AgroCapital BR Platform",
+  "description": "Plataforma AgroCapital BR",
   "main": "src/index.tsx",
   "dependencies": {
     "leaflet": "1.9.4",
