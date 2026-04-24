@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AgroCapital BR</title>
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+
+  <style>
+    body { margin: 0; font-family: Arial; }
+    #map { height: 100vh; }
+
+    .header {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 1000;
+      background: white;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="header">
+  <strong>AgroCapital BR</strong><br/>
+  Originação e estruturação de capital para grandes pecuaristas
+</div>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+  const map = L.map('map').setView([-13.5, -56], 5);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap'
+  }).addTo(map);
+
+  const leads = [
+    { nome: "Fazenda 1", lat: -12.5, lng: -55.5, gado: "15.000 cabeças" },
+    { nome: "Fazenda 2", lat: -14.2, lng: -57.1, gado: "22.000 cabeças" },
+    { nome: "Fazenda 3", lat: -13.1, lng: -54.8, gado: "18.500 cabeças" }
+  ];
+
+  leads.forEach(f => {
+    L.marker([f.lat, f.lng])
+      .addTo(map)
+      .bindPopup(`<b>${f.nome}</b><br>${f.gado}`);
+  });
+</script>
+
+</body>
+</html>
